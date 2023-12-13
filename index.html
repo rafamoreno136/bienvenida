@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mensaje y Fecha</title>
+  <style>
+    body {
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+    }
+    .mensaje {
+      font-size: 30px;
+      font-weight: bold;
+    }
+    .fecha {
+      font-size: 14px;
+      text-transform: capitalize; /* Agregado para capitalizar el texto */
+    }
+  </style>
+</head>
+<body>
+  <p class="mensaje" id="saludo"></p>
+  <p class="fecha" id="fecha"></p>
+
+  <script>
+    function obtenerSaludo() {
+      const ahora = new Date();
+      const hora = ahora.getHours();
+
+      let saludo = "";
+      if (hora >= 6 && hora < 12) {
+        saludo = "Buenos días, Rafa";
+      } else if (hora >= 12 && hora < 20) {
+        saludo = "Buenas tardes, Rafa";
+      } else {
+        saludo = "Buenas noches, Rafa";
+      }
+
+      return saludo;
+    }
+
+    function obtenerFecha() {
+      const opcionesFecha = { weekday: 'long', day: 'numeric', month: 'long' };
+      const fechaActual = new Date().toLocaleDateString('es-ES', opcionesFecha);
+      return fechaActual;
+    }
+
+    function actualizarMensajes() {
+      document.getElementById('saludo').innerText = obtenerSaludo();
+      document.getElementById('fecha').innerText = obtenerFecha();
+    }
+
+    // Actualizar cada segundo para mantener la hora actualizada
+    setInterval(actualizarMensajes, 1000);
+    actualizarMensajes(); // Para mostrar el mensaje de inmediato al cargar la página
+  </script>
+</body>
+</html>
