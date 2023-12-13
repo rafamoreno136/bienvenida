@@ -19,6 +19,9 @@
       text-transform: capitalize;
       margin-top: 0; /* Reduce el margen superior */
     }
+    .lowercase {
+      text-transform: lowercase;
+    }
   </style>
 </head>
 <body>
@@ -43,14 +46,20 @@
     }
 
     function obtenerFecha() {
-      const opcionesFecha = { weekday: 'long', day: 'numeric', month: 'long' };
-      const fechaActual = new Date().toLocaleDateString('es-ES', opcionesFecha);
-      return fechaActual;
+      const diasSemana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+      const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+      
+      const ahora = new Date();
+      const diaSemana = diasSemana[ahora.getDay()];
+      const dia = ahora.getDate();
+      const mes = meses[ahora.getMonth()];
+
+      return `${diaSemana}, ${dia} <span class="lowercase">de</span> ${mes}`; // "de" en minúscula
     }
 
     function actualizarMensajes() {
       document.getElementById('saludo').innerText = obtenerSaludo();
-      document.getElementById('fecha').innerText = obtenerFecha();
+      document.getElementById('fecha').innerHTML = obtenerFecha();
     }
 
     setInterval(actualizarMensajes, 1000);
