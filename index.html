@@ -6,14 +6,18 @@
   <style>
     body {
       font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+      margin: 0;
     }
     .mensaje {
       font-size: 30px;
       font-weight: bold;
+      margin-top: 0;
+      margin-bottom: 5px; /* Ajusta el espacio entre las líneas */
     }
     .fecha {
       font-size: 14px;
-      text-transform: capitalize; /* Agregado para capitalizar el texto */
+      text-transform: capitalize;
+      margin-top: 0; /* Reduce el margen superior */
     }
   </style>
 </head>
@@ -49,9 +53,8 @@
       document.getElementById('fecha').innerText = obtenerFecha();
     }
 
-    // Actualizar cada segundo para mantener la hora actualizada
     setInterval(actualizarMensajes, 1000);
-    actualizarMensajes(); // Para mostrar el mensaje de inmediato al cargar la página
+    actualizarMensajes();
   </script>
 </body>
 </html>
