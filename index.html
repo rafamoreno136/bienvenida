@@ -53,8 +53,9 @@
       const diaSemana = diasSemana[ahora.getDay()];
       const dia = ahora.getDate();
       const mes = meses[ahora.getMonth()];
+      const año = ahora.getFullYear(); // Obtiene el año actual
 
-      return `${diaSemana}, ${dia} <span class="lowercase">de</span> ${mes}`; // "de" en minúscula
+      return `${diaSemana}, ${dia} <span class="lowercase">de</span> ${mes} <span class="lowercase">de</span> ${año}`; // Cambio "de" antes del año a minúsculas
     }
 
     function actualizarMensajes() {
